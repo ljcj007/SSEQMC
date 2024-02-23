@@ -1,0 +1,35 @@
+###########################################
+#Parameters 
+Z1=5395
+Z2=5415
+E=0
+O1=2
+O2=2
+###########################################
+let O=$O1
+while((O<=$O2))
+do
+let L=9*2**$O
+mkdir l$L
+cd l$L
+Z=$Z1
+while((Z<=$Z2))
+do
+mkdir g$Z
+cd g$Z
+cp ../../model/* .
+echo $E>>read.in
+echo $L>>read.in
+echo $L>>read.in
+echo $Z>>read.in
+echo '82467864782'>seed.in
+echo 'qsub -b y a.out'>job
+chmod u+x job
+./job
+sleep 1
+cd ..
+let Z=Z+10
+done
+cd ..
+let O=O+1
+done
