@@ -3,6 +3,9 @@
 
 # USAGE
  ifort **.f90 -o any.out
+
+and then
+ 
  ./any.out
 
 # CITE
