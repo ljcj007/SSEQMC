@@ -1,7 +1,7 @@
 # SSEQMC
  the Stochastic Series Expansion (SSE) Quantum Monte Carlo (QMC) in Fortran
 
-#USAGE
+# USAGE
  ifort **.f90 -o any.out
  ./any.out
 
