@@ -1,0 +1,15 @@
+#!/bin/bash
+for j1 in $(seq 3 1 200 )
+do
+mkdir ./0.7-$j1
+cd ./0.7-$j1
+cp ../seed.in ./seed.in
+cp ../sse.run ./sse.run
+cp ../sse1 ./sse
+cp ../sse.in ./sse.in
+cat >seed.in<<!
+$RANDOM
+!
+qsub sse.run
+cd ..
+done

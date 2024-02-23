@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N sac
+#PBS -j n
+cd $PBS_O_WORKDIR
+for j1 in $(seq 1 1 24 )
+do
+mkdir ./$j1
+cp ./seed.in ./$j1/seed.in
+cp ./sac.run ./$j1/sac.run
+cp ./sac.in ./$j1/sac.in
+cp ./sac1 ./$j1/sac1
+cp ./sac2 ./$j1/sac2
+if [ $j1 -lt 10 ]
+ then
+ cp q00$j1.dat ./$j1/t.in
+else
+ if [ $j1 -lt 100 ]
+  then
+ cp q0$j1.dat ./$j1/t.in
+ else
+ cp q$j1.dat ./$j1/t.in
+ fi
+fi
+cd ./$j1
+./sac1
+./sac2
+while read b
+do
+echo $j1 $b >> ../sqw.dat
+done < sw.dat
+cd ..
+done
+
